@@ -16,7 +16,7 @@ public class NetworkScanner {
             try {
                 isReachable = InetAddress.getByName(host).isReachable(timeout);
             } catch (IOException ex) {
-                logger.log(ex, "Target address does not belong to the network's range");
+                logger.logException(ex, "Target address does not belong to the network's range");
             }
             if (isReachable) {
                 System.out.println(host + " is reachable");
@@ -33,7 +33,7 @@ public class NetworkScanner {
             System.out.println("localhost host address: " + myAddr.getHostAddress());
             System.out.println("localhost host name: " + myAddr.getHostName());
         } catch (UnknownHostException ex) {
-            logger.log(ex, "The IP address of this host could not be determined");
+            logger.logException(ex, "The IP address of this host could not be determined");
         }
     }
 
@@ -43,7 +43,7 @@ public class NetworkScanner {
         logger.setDateFormat("dd/MM/yyyy 'at' HH:mm:ss");
         logger.start();
         logger.clearLog();
-        logger.msg("Dev: Pikku");
+        logger.logMsg("Dev: Pikku");
         Scanner inputScanner = new Scanner(System.in);
         NetworkScanner netScanner = new NetworkScanner();
         netScanner.local();
